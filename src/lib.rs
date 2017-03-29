@@ -9,6 +9,7 @@ pub use elf_sections::{ELF_SECTION_WRITABLE, ELF_SECTION_ALLOCATED, ELF_SECTION_
 pub use memory_map::{MemoryMapTag, MemoryArea, MemoryAreaIter};
 pub use module::{ModuleTag, ModuleIter};
 pub use command_line::CommandLineTag;
+pub use framebuffer::FramebufferTag;
 
 #[macro_use]
 extern crate bitflags;
@@ -19,6 +20,7 @@ mod elf_sections;
 mod memory_map;
 mod module;
 mod command_line;
+mod framebuffer;
 
 pub unsafe fn load(address: usize) -> &'static BootInformation {
     if !cfg!(test) {
@@ -64,6 +66,10 @@ impl BootInformation {
 
     pub fn command_line_tag(&self) -> Option<&'static CommandLineTag> {
         self.get_tag(1).map(|tag| unsafe{&*(tag as *const Tag as *const CommandLineTag)})
+    }
+
+    pub fn framebuffer_tag(&self) -> Option<&'static FramebufferTag> {
+        self.get_tag(8).map(|tag| unsafe{&*(tag as *const Tag as *const FramebufferTag)})
     }
 
     fn has_valid_end_tag(&self) -> bool {
