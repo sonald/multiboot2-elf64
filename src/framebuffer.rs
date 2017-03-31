@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 #[repr(u8)]
 pub enum FramebufferType {
     Indexed = 0,
@@ -16,7 +16,7 @@ pub struct FramebufferTag {
     pub width: u32,
     pub height: u32,
     pub bpp: u8,
-    pub frame_type: u8,
+    pub frame_type: FramebufferType,
     reserved: u16
 }
 
