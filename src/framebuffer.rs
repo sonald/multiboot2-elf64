@@ -16,7 +16,7 @@ pub struct FramebufferTag {
     pub width: u32,
     pub height: u32,
     pub bpp: u8,
-    pub frame_type: FramebufferType,
+    pub frame_type: u8,
     reserved: u16
 }
 

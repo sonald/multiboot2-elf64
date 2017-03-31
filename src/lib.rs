@@ -9,7 +9,7 @@ pub use elf_sections::{ELF_SECTION_WRITABLE, ELF_SECTION_ALLOCATED, ELF_SECTION_
 pub use memory_map::{MemoryMapTag, MemoryArea, MemoryAreaIter};
 pub use module::{ModuleTag, ModuleIter};
 pub use command_line::CommandLineTag;
-pub use framebuffer::FramebufferTag;
+pub use framebuffer::{FramebufferTag, FramebufferType};
 
 #[macro_use]
 extern crate bitflags;
